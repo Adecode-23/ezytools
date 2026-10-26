@@ -1,236 +1,134 @@
-# Ezytools 🛠️
+# Ezytools 🔧
 
 **Reusable Python utilities for bot development**
 
-Ezytools is a Python utility library designed to make bot development simpler by handling repetitive tasks in reusable functions. It currently includes moderation helpers built to work with the Yapper Python SDK.
+Ezytools is a Python utility library designed to simplify bot development by providing reusable functions for common tasks.
 
-Instead of writing the same command logic over and over, you can call an Ezytools function and let it handle argument parsing, basic validation, API calls, and user-facing responses.
+Originally developed for projects using the Yapper Python SDK, Ezytools aims to make bot development easier, cleaner, and more efficient.
 
 ## ✨ Features
 
-- 🛡️ **Moderation commands** — kick, ban, unban, mute, and unmute users
-- ⚠️ **Warning system** — warn users, view their warnings, and clear warnings
-- 🧩 **Yapper SDK integration** — designed to work with your existing Yapper bot
-- 💬 **Argument handling** — parses command arguments and supports quoted text where possible
-- ⏱️ **Duration parsing** — supports minute, hour, and day formats for timeouts
-- 🛠️ **Reusable functions** — keep your bot's main file cleaner and easier to maintain
-- 🚨 **Error handling** — provides readable responses for common moderation errors
+- 🛡️ **Moderation Tools** — Reusable moderation helpers for bot developers.
+- ⚠️ **Warning System** — Utilities for managing user warnings.
+- 🎨 **Embed Helpers** — Functions to help create message embeds.
+- 👤 **User Utilities** — Helpers for working with message arguments and user targets.
+- ⚙️ **Reusable Functions** — Reduce repeated code across your bot projects.
 
-## 📦 Project Structure
+*Available functionality depends on the functions included in the installed version.*
 
-Your project can be organised like this:
+## 📦 Installation
 
-```text
-your-project/
-├── ezytools.py
-├── yapper.py
-└── ezybot.py
-```
-
-- `ezytools.py` contains the reusable utility functions
-- `yapper.py` provides the Yapper Python SDK
-- `ezybot.py` contains your bot's commands and main logic
-
-## ⚙️ Requirements
-
-- Python 3.10 or later recommended
-- The Yapper Python SDK for Yapper-specific moderation helpers
-
-Ezytools uses Python's standard library for its current functionality.
-
-## 🚀 Installation
-
-### 1. Download Ezytools
-
-Clone this repository:
+Install Ezytools using pip:
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+pip install ezytools
 ```
 
-Replace `YOUR_REPOSITORY_URL` with the actual URL of this repository.
+Upgrade to the latest published version:
 
-### 2. Add it to your project
-
-Place `ezytools.py` in the same directory as your bot file.
-
-```text
-your-project/
-├── ezytools.py
-├── yapper.py
-└── ezybot.py
+```bash
+pip install --upgrade ezytools
 ```
 
-### 3. Import Ezytools
+## 🚀 Getting Started
+
+Import Ezytools into your Python project:
+
+```python
+import ezytools
+
+print(ezytools.__version__)
+```
+
+You can then use the functions exposed by the package.
+
+### Using Ezytools with Yapper
+
+Ezytools was designed with reusable bot-development utilities in mind, including helpers for moderation and message handling.
+
+Import the package into your bot:
 
 ```python
 import ezytools
 ```
 
-## 🛡️ Moderation Utilities
+Check the source code and function documentation for the correct function names, parameters, and usage requirements before calling individual utilities.
 
-Ezytools currently provides these moderation helpers:
+**Note:** Ezytools does not replace the Yapper SDK. Functions that interact with Yapper messages or moderation features may require objects or parameters provided by that SDK.
+## 📥 Manual Installation
 
-| Function | Description |
-|---|---|
-| `ezytools.kick(bot, msg)` | Kicks a user from the server |
-| `ezytools.ban(bot, msg)` | Bans a user |
-| `ezytools.unban(bot, msg)` | Removes a user's ban |
-| `ezytools.mute(bot, msg)` | Times out a user |
-| `ezytools.unmute(bot, msg)` | Removes a user's timeout |
-| `ezytools.warn(bot, msg)` | Records a warning for a user |
-| `ezytools.warnings(bot, msg)` | Displays a user's recorded warnings |
-| `ezytools.clearwarnings(bot, msg)` | Clears a user's recorded warnings |
-| `ezytools.help_text()` | Returns a list of the moderation commands |
+Prefer downloading the files yourself? You can install Ezytools manually from GitHub.
 
-## 💻 Usage
+### Method 1: Download the ZIP
 
-Ezytools is designed to work with command handlers from the Yapper Python SDK.
+1. Visit the [Ezytools GitHub repository](https://github.com/Adecode-23/ezytools).
+2. Click the green **Code** button.
+3. Select **Download ZIP**.
+4. Extract the downloaded ZIP file.
+5. Open the extracted folder.
 
-### Example: Registering a Kick Command
+### Method 2: Install the Downloaded Package
 
-```python
-import ezytools
+If you have downloaded a `.whl` file for an Ezytools release:
 
-@bot.command("kick", "Kick a member")
-def kick_command(msg):
-    ezytools.kick(bot, msg)
+1. Open a terminal in the folder containing the downloaded file.
+2. Run the following command, replacing the filename with the actual filename:
+
+```bash
+py -m pip install ezytools-0.1.0-py3-none-any.whl
 ```
 
-### Example: Registering Moderation Commands
+Alternatively, install directly using the full file path:
 
-```python
-import ezytools
-
-@bot.command("kick", "Kick a member")
-def kick_command(msg):
-    ezytools.kick(bot, msg)
-
-@bot.command("ban", "Ban a member")
-def ban_command(msg):
-    ezytools.ban(bot, msg)
-
-@bot.command("unban", "Unban a user")
-def unban_command(msg):
-    ezytools.unban(bot, msg)
-
-@bot.command("mute", "Timeout a member")
-def mute_command(msg):
-    ezytools.mute(bot, msg)
-
-@bot.command("unmute", "Remove a member's timeout")
-def unmute_command(msg):
-    ezytools.unmute(bot, msg)
-
-@bot.command("warn", "Warn a member")
-def warn_command(msg):
-    ezytools.warn(bot, msg)
-
-@bot.command("warnings", "View a member's warnings")
-def warnings_command(msg):
-    ezytools.warnings(bot, msg)
-
-@bot.command("clearwarnings", "Clear a member's warnings")
-def clearwarnings_command(msg):
-    ezytools.clearwarnings(bot, msg)
+```bash
+py -m pip install "C:\path\to\ezytools-0.1.0-py3-none-any.whl"
 ```
 
-**Important:** This example assumes you have already created your Yapper `bot` instance. The bot must have the permissions required for each moderation action.
+Replace the example path with the location of your downloaded file.
 
-## ⏱️ Timeout Durations
+### Method 3: Use the Source Code Directly
 
-The mute helper accepts durations in these formats:
+If you only want to inspect or modify the source code:
 
-| Format | Meaning |
-|---|---|
-| `10m` | 10 minutes |
-| `2h` | 2 hours |
-| `1d` | 1 day |
-| `30` | 30 minutes |
+1. Download and extract the repository ZIP.
+2. Open the `src/ezytools/` folder.
+3. Review the Python files.
 
-The maximum supported duration is **28 days**.
+**Note:** Downloading the source code does not automatically install Ezytools. To use it as an installed package, use the `.whl` installation method or install it through pip.
 
-Example command:
+For the latest published version, use:
 
-```text
-/mute 123456789 30m Spamming
+```bash
+py -m pip install --upgrade ezytools
 ```
 
-Replace the example user ID with the actual user's ID.
 
-## ⚠️ Warning System
+## 💡 Why Ezytools?
 
-Warnings are currently stored **in memory**.
+Ezytools was created to reduce repetitive code and make reusable bot utilities easier to maintain.
 
-This means:
-- Warnings can be viewed using the warnings helper
-- Warnings can be cleared using the clearwarnings helper
-- Warnings are separated by server and user
-- **Warnings are lost when the bot restarts**
+Instead of repeatedly writing the same helper functions across projects, developers can organise and reuse their tools through one Python package.
 
-Persistent warning storage would require a database or file-based storage system.
+## 🔒 Licence
 
-## 🧰 Error Handling
+Ezytools is proprietary software.
 
-Ezytools handles common errors returned by moderation requests, including:
+Copyright © 2026 Ezytools. All rights reserved.
 
-- Missing permissions
-- Users or bans that cannot be found
-- Invalid requests
-- Incorrect command arguments
+You may not claim Ezytools or its original code as your own creation. Copying, modifying, redistributing, or commercially using the software is subject to the terms of the included `LICENSE` file.
 
-The bot still needs the correct server permissions, and the Yapper SDK must be configured correctly.
+See [`LICENSE`](LICENSE) for the full terms.
 
-## 🔒 Security
+## 🛠️ Development
 
-- Keep your bot token private
-- Store sensitive configuration in environment variables
-- Never commit tokens or passwords to GitHub
-- Give your bot only the permissions it needs
-- Test moderation commands in a safe test server before using them in a real community
+Ezytools is actively developed, and its functionality may change between releases.
 
-## 🛠️ Troubleshooting
+To report a bug or suggest an improvement, use the Issues section of the official GitHub repository.
 
-### Ezytools cannot be imported
+## 👨‍💻 Creator
 
-Make sure `ezytools.py` is in the same directory as your bot file, or installed in a location Python can import from.
+Created by **Adecode23**.
 
-### Moderation commands fail
+Ezytools started as a collection of reusable utilities for bot development and grew into an independent Python package.
 
-Check that:
-- The bot is running and connected
-- The bot has the required server permissions
-- The user ID is correct
-- The command is being used inside a server
-
-### Timeout duration is rejected
-
-Use a valid duration such as `10m`, `2h`, `1d`, or a number of minutes. The maximum is 28 days.
-
-### Warnings disappear
-
-Warnings are stored in memory, so restarting the bot clears them.
-
-## 🤝 Contributing
-
-Contributions, bug reports, and suggestions are welcome.
-
-When contributing:
-1. Keep functions reusable
-2. Follow standard Python formatting conventions
-3. Test changes before submitting them
-4. Update the README when features or usage change
-
-## 📄 License
-
-No license has been specified yet.
-
-If you plan to make Ezytools publicly reusable, add a license file before publishing it so users know how they are allowed to use, modify, and distribute the code.
-
-## 📌 About
-
-Ezytools is a developing Python utility library focused on making bot development cleaner, simpler, and more reusable.
-
-**Current focus:** moderation helpers and Yapper SDK integration.
-
-More utilities can be added as the library develops.
+**Built to make bot development easier.** 🔧
