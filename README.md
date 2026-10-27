@@ -6,6 +6,8 @@ Ezytools is a Python utility library designed to simplify bot development by pro
 
 Originally developed for projects using the Yapper Python SDK, Ezytools aims to make bot development easier, cleaner, and more efficient.
 
+This read me will not be updated frquently so here is the PyPI.org for updates 
+https://pypi.org/project/ezytools/
 ## ✨ Features
 
 - 🛡️ **Moderation Tools** — Reusable moderation helpers for bot developers.
